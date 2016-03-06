@@ -1,0 +1,19 @@
+{
+  "name": "obscure_javascript_utilities",
+  "version": "0.0.1",
+  "description": "Utilities for obscurejavascript.tumblr.com",
+  "main": "update_most_popular.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Jacob Friesen <jacob@jacobfriesen.com> (http://jacobfriesen.com)",
+  "license": "MIT",
+  "dependencies": {
+    "async": "1.4.1",
+    "lodash": "3.10.1",
+    "yargs": "3.18.0"
+  }
+}
