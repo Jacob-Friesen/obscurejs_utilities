@@ -10,7 +10,8 @@ var async = require('async'),
 var argv = require('yargs').argv;
 
 var DEBUG = argv.debug,
-    OUTPUT_FILE = argv.o;
+    OUTPUT_HTML_FILE = argv.html,
+    OUTPUT_HTML_CSS = argv.css;
 
 var CONSUMER_KEY = 'zKpNzvLkw45CKlKsb0FtdyxDKWwchQAg7qiRFnkcEotPYzzwFu',
     BLOG = 'obscurejavascript.tumblr.com',
@@ -187,6 +188,11 @@ var makeHtml = function(posts) {
     return html;
 };
 
+if (!_.isEmpty(OUTPUT_HTML_CSS)) {
+    console.log('Copying the CSS file to ' + OUTPUT_HTML_CSS + '...');
+    fs.createReadStream(CSS_FILE).pipe(fs.createWriteStream(OUTPUT_HTML_CSS));
+}
+
 console.log('Retrieving posts and formatting posts...');
 
 // Get the total number of posts then search through all posts to get the most popular
@@ -195,15 +201,15 @@ makeRequest('/info', null, function(data) {
 
     debug('There are ' + totalPosts + ' total posts.');
     getAllPosts(totalPosts, _.partialRight(mostPopular, MOST_POPULAR, function(posts) {
-        if(!_.isEmpty(OUTPUT_FILE)) {
-            console.log('Writing posts to the', OUTPUT_FILE, 'file...');
+        if(!_.isEmpty(OUTPUT_HTML_FILE)) {
+            console.log('Writing posts to the', OUTPUT_HTML_FILE, 'file...');
 
             var html = makeHtml(posts);
             debug('HTML\n', html);
 
-            fs.writeFileSync(OUTPUT_FILE, html);
+            fs.writeFileSync(OUTPUT_HTML_FILE, html);
 
-            console.log('Posts written to', OUTPUT_FILE + '.');
+            console.log('Posts written to', OUTPUT_HTML_FILE + '.');
         } else {
             debug('No file specified. Writing to console');
             console.log(posts);

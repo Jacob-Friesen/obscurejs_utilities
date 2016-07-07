@@ -10,8 +10,10 @@ update_most_popular.js
 Used to create a most popular page:
 
 --debug Show debug printouts
--o The file to output the formatted data to
+--html The HTML file to output the formatted data to. If not specified the JSON to write HTML is printed to console
+--css The CSS file to output the formatted data to. If not specified nothing is copied.
+
 
 **Example**
 
-    node update_most_popular.js --debug true -o most_popular.html
+    node update_most_popular.js --html ../portfolio_website/src/downloads/most_popular.html --css ../portfolio_website/src/downloads/most_popular.css
