@@ -9,8 +9,8 @@ update_most_popular.js
 ----------------------
 Used to create a most popular page:
 
---debug Show debug printouts
---html The HTML file to output the formatted data to. If not specified the JSON to write HTML is printed to console
+--debug Show debug printouts<br/>
+--html The HTML file to output the formatted data to. If not specified the JSON to write HTML is printed to console<br/>
 --css The CSS file to output the formatted data to. If not specified nothing is copied.
 
 
